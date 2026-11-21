@@ -81,9 +81,9 @@ export default function Filters({ filters, onChange,mobile = false, onClose,}: F
           <select value={filters.category} onChange={(e) => updateFilter("category", e.target.value) }
             className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm outline-none focus:border-blue-500 dark:border-gray-700 dark:bg-gray-800"
           >
-            {categories.map((region) => (
-              <option key={region} value={region}>
-                {region === "All" ? "All regions" : region}
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category === "All" ? "All categories" : category}
               </option>
             ))}
           </select>
@@ -95,9 +95,9 @@ export default function Filters({ filters, onChange,mobile = false, onClose,}: F
             value={filters.region}
             onChange={(e) => updateFilter("region", e.target.value) }
           >
-            {regions.map((category) => (
-              <option key={category} value={category}>
-                {category === "All" ? "All category" : category}
+            {regions.map((region) => (
+              <option key={region} value={region}>
+                {region === "All" ? "All regions" : region}
               </option>
             ))}
           </select>

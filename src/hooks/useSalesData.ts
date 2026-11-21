@@ -1,10 +1,9 @@
 
 import { useMemo } from "react";
-import { Sale, Filters } from "@/types/sales";
+import { Filters } from "@/types/sales";
 import { salesData } from "@/data/sales";
 
 export function useSalesData(filters: Filters) {
-  const grouped = new Map<string, number>();
   const filteredData = useMemo(() => {
     return salesData.filter((sale) => {
       const matchesDate =

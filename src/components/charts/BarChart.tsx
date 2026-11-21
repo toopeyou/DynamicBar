@@ -60,7 +60,7 @@ export default function BarChart({ data }: BarChartProps) {
   return (
     <div className="w-full overflow-hidden">
       <svg viewBox={`0 0 ${width} ${height}`} className="w-full"role="img" aria-labelledby="chart-title">
-        <title>Month Sales</title>
+        <title id="chart-title" >Month Sales</title>
         {[0, 1, 2, 3, 4].map((step) => {
             const value = (scaleMax / 4) * step;
             const y = getY(value);
@@ -85,9 +85,17 @@ export default function BarChart({ data }: BarChartProps) {
               onMouseLeave={() => setActiveBar(null)}
               onFocus={() => setActiveBar(index)}
               onBlur={() => setActiveBar(null)}
+                className="outline-none focus:outline-none"
             >
-              <rect x={x} y={y} width={barWidth} height={barHeight} rx="5" className="fill-blue-500 transition-all duration-500 ease-in-out hover:fill-blue-600"
-                  fill={activeBar === index ? "#2563eb" : "#3b82f6"}
+              <rect  x={x}
+              y={y}
+              width={barWidth}
+              height={barHeight}
+              rx="5"
+              fill={activeBar === index ? "#2563eb" : "#3b82f6"}
+              stroke={activeBar === index ? "#f59e0b" : "none"}
+              strokeWidth={activeBar === index ? 3 : 0}
+              className="transition-all duration-500 ease-in-out"
               />
                 <text x={getX(index)} y={height - 20} textAnchor="middle" fill="currentColor"  fontSize="12">
                     {formatMonth(item.date)}
@@ -115,10 +123,6 @@ export default function BarChart({ data }: BarChartProps) {
         })}
       </svg>
 
-      {data.length === 0 && (
-        <p className="py-4 text-center text-sm text-gray-500">No data available for selected filters</p>
-      )}
-      
     </div>
   );
 }

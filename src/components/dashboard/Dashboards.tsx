@@ -1,4 +1,3 @@
-
 "use client";
 import { exportCSV } from "@/utils/exportCSV";
 import BarChart from "@/components/charts/BarChart";
@@ -71,11 +70,7 @@ export default function Dashboard() {
         <ChartDataTable data={chartData} />
       </div>
       {mobileFiltersOpen && (
-        <Filters filters={filters}
-        onChange={setFilters}
-          mobile
-          onClose={() => setMobileFiltersOpen(false)}
-        />
+        <Filters filters={filters} onChange={setFilters} mobile onClose={() => setMobileFiltersOpen(false)}/>
       )}
     </main>
   );
